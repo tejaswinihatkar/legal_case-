@@ -5,54 +5,69 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { MessageSquare, Send, Bot, User, Globe, BookOpen, Scale, Heart } from 'lucide-react';
+import { MessageSquare, Send, Bot, User, Globe, BookOpen, Scale, Heart, Smartphone, Shield, Briefcase } from 'lucide-react';
 
 const LegalChatbot = () => {
   const [messages, setMessages] = useState([
     {
       id: 1,
       type: 'bot',
-      content: 'Hello! I\'m your Legal AI Assistant. I can help you with legal advice, explain case stories, and provide guidance in multiple languages. How can I assist you today?',
+      content: 'Namaste! I\'m your AI Legal Saathi. मैं आपकी कानूनी समस्याओं में मदद कर सकता हूं - whether it\'s gig work issues, cyber harassment, housing problems, or any modern legal challenge. आज आप क्या जानना चाहते हैं?',
       timestamp: '10:00 AM'
     }
   ]);
   const [inputMessage, setInputMessage] = useState('');
-  const [selectedLanguage, setSelectedLanguage] = useState('english');
-  const [chatMode, setChatMode] = useState('advice');
+  const [selectedLanguage, setSelectedLanguage] = useState('hinglish');
+  const [chatMode, setChatMode] = useState('contemporary');
 
   const languages = [
     { value: 'english', label: 'English', flag: '🇺🇸' },
+    { value: 'hinglish', label: 'Hinglish', flag: '🇮🇳' },
     { value: 'hindi', label: 'Hindi', flag: '🇮🇳' },
     { value: 'marathi', label: 'Marathi', flag: '🇮🇳' },
     { value: 'gujarati', label: 'Gujarati', flag: '🇮🇳' },
     { value: 'bengali', label: 'Bengali', flag: '🇮🇳' },
     { value: 'tamil', label: 'Tamil', flag: '🇮🇳' },
+    { value: 'telugu', label: 'Telugu', flag: '🇮🇳' },
   ];
 
   const quickQuestions = [
-    "What are my rights as a tenant?",
-    "How to file a consumer complaint?",
-    "What is the process for divorce?",
-    "How to register an FIR?",
-    "Employment rights in India",
-    "Property documentation needed"
+    "Zomato/Swiggy delivery partner rights क्या हैं?",
+    "Social media harassment का case कैसे करें?",
+    "Work from home में employer के rights क्या हैं?",
+    "Rent agreement में scam से कैसे बचें?",
+    "AI/deepfake misuse के लिए legal action?",
+    "Cab driver vs Ola/Uber dispute में क्या करें?",
+    "Online shopping fraud का legal solution?",
+    "Mental health leave का employee right?",
+    "Landlord illegal eviction से protection?",
+    "Data privacy violation की complaint कैसे करें?"
   ];
 
-  const caseStories = [
+  const contemporaryStories = [
     {
-      title: "The Digital Privacy Victory",
-      category: "Cyber Law",
-      summary: "How a small business owner fought against unauthorized data collection and won..."
+      title: "The Gig Worker's Victory",
+      category: "Labor Rights",
+      summary: "How Ravi, a Zomato delivery partner, fought for insurance coverage after an accident and won landmark rights...",
+      icon: Briefcase
     },
     {
-      title: "Justice for the Common Worker",
-      category: "Employment Law",
-      summary: "A construction worker's fight against wage theft that changed labor laws..."
+      title: "The Deepfake Justice",
+      category: "Cyber Crime",
+      summary: "Priya's battle against AI-generated inappropriate content and how she got justice through new cyber laws...",
+      icon: Shield
     },
     {
-      title: "The Family Reunion",
-      category: "Family Law",
-      summary: "A heartwarming custody case that brought a divided family back together..."
+      title: "The Remote Work Revolution",
+      category: "Employment",
+      summary: "When Amit's company tried to cut WFH allowances, here's how employees united for their digital rights...",
+      icon: Smartphone
+    },
+    {
+      title: "The Housing App Scam",
+      category: "Consumer Protection",
+      summary: "Students vs fake rental listings - how they exposed a multi-crore housing scam through legal action...",
+      icon: Scale
     }
   ];
 
@@ -83,17 +98,21 @@ const LegalChatbot = () => {
   };
 
   const getBotResponse = (message, mode, language) => {
-    if (mode === 'story') {
-      return `Let me tell you a story about a similar case... Once upon a time, there was a person facing a legal challenge just like yours. Through determination and proper legal guidance, they were able to resolve their issue successfully. Here's how they did it: [Story continues based on your specific question about "${message}"]`;
-    }
-    
     const responses = {
-      english: `I understand you're asking about "${message}". Based on Indian law, here are the key points you should know: 1) Your legal rights in this matter, 2) The proper procedure to follow, 3) Required documentation, and 4) Timeline expectations. Would you like me to elaborate on any of these points?`,
-      hindi: `मैं समझ गया हूँ कि आप "${message}" के बारे में पूछ रहे हैं। भारतीय कानून के अनुसार, यहाँ मुख्य बातें हैं जो आपको जानना चाहिए: 1) इस मामले में आपके कानूनी अधिकार, 2) अनुसरण करने की उचित प्रक्रिया, 3) आवश्यक दस्तावेज़, और 4) समयसीमा की अपेक्षाएं।`,
-      marathi: `मला समजले आहे की तुम्ही "${message}" विषयी विचारत आहात। भारतीय कायद्यानुसार, तुम्हाला या मुख्य गोष्टी माहित असाव्यात: 1) या प्रकरणात तुमचे कायदेशीर हक्क, 2) पाळावयाची योग्य कार्यपद्धती, 3) आवश्यक कागदपत्रे, आणि 4) वेळेची अपेक्षा।`
+      hinglish: `समझ गया! "${message}" के बारे में आपका सवाल है। यहाँ है practical solution: 1) आपके legal rights क्या हैं, 2) कौन से documents चाहिए, 3) कहाँ complaint करना है, 4) Expected timeline क्या है। Need more details? बताइए!`,
+      hindi: `मैं समझ गया हूँ कि आप "${message}" के बारे में पूछ रहे हैं। आज के समय में ये बहुत common issue है। यहाँ step-by-step solution है: 1) पहले अपने अधिकार समझिए, 2) जरूरी कागजात इकट्ठे करिए, 3) सही जगह शिकायत दर्ज करिए।`,
+      english: `I understand you're asking about "${message}". This is a very relevant issue in today's digital age. Here's what you should know: 1) Your legal rights in this modern context, 2) Digital evidence you need to collect, 3) Online platforms for filing complaints, 4) Expected resolution timeline. Would you like me to elaborate on any specific aspect?`
     };
 
-    return responses[language] || responses.english;
+    if (mode === 'contemporary') {
+      return responses[language] || responses.hinglish;
+    }
+    
+    if (mode === 'story') {
+      return `Let me tell you a real story that happened recently... एक similar case था where someone faced the exact same issue as "${message}". Through smart legal strategy and using modern digital tools, they successfully resolved it. यहाँ है complete story और solution...`;
+    }
+
+    return responses[language] || responses.hinglish;
   };
 
   const handleQuickQuestion = (question) => {
@@ -109,16 +128,16 @@ const LegalChatbot = () => {
             <div className="flex items-center space-x-4">
               <div className="flex items-center space-x-2">
                 <MessageSquare className="h-5 w-5 text-blue-300" />
-                <span className="text-white font-medium">Chat Mode:</span>
+                <span className="text-white font-medium">AI Mode:</span>
               </div>
               <Select value={chatMode} onValueChange={setChatMode}>
                 <SelectTrigger className="w-48 bg-white/10 border-white/20 text-white">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent className="bg-slate-800 border-white/20">
-                  <SelectItem value="advice">Legal Advice</SelectItem>
-                  <SelectItem value="story">Case Stories</SelectItem>
-                  <SelectItem value="guidance">Step-by-Step Guidance</SelectItem>
+                  <SelectItem value="contemporary">Contemporary Issues</SelectItem>
+                  <SelectItem value="story">Real Case Stories</SelectItem>
+                  <SelectItem value="guidance">Step-by-Step Guide</SelectItem>
                 </SelectContent>
               </Select>
             </div>
@@ -130,7 +149,7 @@ const LegalChatbot = () => {
             <div className="flex items-center space-x-4">
               <div className="flex items-center space-x-2">
                 <Globe className="h-5 w-5 text-blue-300" />
-                <span className="text-white font-medium">Language:</span>
+                <span className="text-white font-medium">भाषा/Language:</span>
               </div>
               <Select value={selectedLanguage} onValueChange={setSelectedLanguage}>
                 <SelectTrigger className="w-48 bg-white/10 border-white/20 text-white">
@@ -158,17 +177,22 @@ const LegalChatbot = () => {
                 <div>
                   <CardTitle className="text-white flex items-center">
                     <Bot className="h-5 w-5 mr-2" />
-                    Legal AI Assistant
+                    Legal Saathi AI
                   </CardTitle>
                   <CardDescription className="text-blue-200">
-                    {chatMode === 'story' ? 'Story Mode - Cases as narratives' : 
-                     chatMode === 'guidance' ? 'Guidance Mode - Step-by-step help' : 
-                     'Advice Mode - Direct legal assistance'}
+                    {chatMode === 'story' ? 'Real Stories Mode - सच्ची कहानियां' : 
+                     chatMode === 'guidance' ? 'Step-by-Step Guide - व्यावहारिक मार्गदर्शन' : 
+                     'Contemporary Issues - आज के जमाने की समस्याएं'}
                   </CardDescription>
                 </div>
-                <Badge className="bg-green-500/20 text-green-300 border-green-500/30">
-                  Online
-                </Badge>
+                <div className="flex items-center space-x-2">
+                  <Badge className="bg-green-500/20 text-green-300 border-green-500/30">
+                    Live
+                  </Badge>
+                  <Badge className="bg-blue-500/20 text-blue-300 border-blue-500/30">
+                    2024 Updated
+                  </Badge>
+                </div>
               </div>
             </CardHeader>
             
@@ -205,7 +229,7 @@ const LegalChatbot = () => {
                 <Input
                   value={inputMessage}
                   onChange={(e) => setInputMessage(e.target.value)}
-                  placeholder="Ask your legal question..."
+                  placeholder="अपना legal question पूछिए... Ask your legal question..."
                   className="flex-1 bg-white/10 border-white/20 text-white placeholder:text-blue-200"
                   onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
                 />
@@ -225,19 +249,19 @@ const LegalChatbot = () => {
           {/* Quick Questions */}
           <Card className="bg-white/10 backdrop-blur-sm border-white/20">
             <CardHeader>
-              <CardTitle className="text-white text-lg">Quick Questions</CardTitle>
+              <CardTitle className="text-white text-lg">आज के सवाल - Today's Questions</CardTitle>
               <CardDescription className="text-blue-200">
-                Common legal queries
+                Common modern legal queries
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <div className="space-y-2">
+              <div className="space-y-2 max-h-64 overflow-y-auto">
                 {quickQuestions.map((question, index) => (
                   <Button
                     key={index}
                     variant="outline"
                     size="sm"
-                    className="w-full text-left justify-start border-white/20 text-blue-200 hover:bg-white/10 hover:text-white text-xs"
+                    className="w-full text-left justify-start border-white/20 text-blue-200 hover:bg-white/10 hover:text-white text-xs h-auto py-2 px-3"
                     onClick={() => handleQuickQuestion(question)}
                   >
                     {question}
@@ -247,27 +271,34 @@ const LegalChatbot = () => {
             </CardContent>
           </Card>
 
-          {/* Case Stories */}
+          {/* Contemporary Case Stories */}
           {chatMode === 'story' && (
             <Card className="bg-white/10 backdrop-blur-sm border-white/20">
               <CardHeader>
                 <CardTitle className="text-white text-lg flex items-center">
                   <BookOpen className="h-4 w-4 mr-2" />
-                  Popular Case Stories
+                  Real Stories - सच्ची कहानियां
                 </CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="space-y-4">
-                  {caseStories.map((story, index) => (
+                  {contemporaryStories.map((story, index) => (
                     <div
                       key={index}
                       className="p-3 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 transition-all duration-200 cursor-pointer"
                     >
-                      <h4 className="font-medium text-white text-sm mb-1">{story.title}</h4>
-                      <Badge variant="outline" className="border-blue-500/50 text-blue-300 text-xs mb-2">
-                        {story.category}
-                      </Badge>
-                      <p className="text-blue-200 text-xs">{story.summary}</p>
+                      <div className="flex items-start space-x-3">
+                        <div className="p-2 rounded bg-white/10">
+                          <story.icon className="h-4 w-4 text-blue-300" />
+                        </div>
+                        <div className="flex-1">
+                          <h4 className="font-medium text-white text-sm mb-1">{story.title}</h4>
+                          <Badge variant="outline" className="border-blue-500/50 text-blue-300 text-xs mb-2">
+                            {story.category}
+                          </Badge>
+                          <p className="text-blue-200 text-xs">{story.summary}</p>
+                        </div>
+                      </div>
                     </div>
                   ))}
                 </div>
@@ -275,28 +306,63 @@ const LegalChatbot = () => {
             </Card>
           )}
 
-          {/* Features */}
+          {/* Modern Features */}
           <Card className="bg-white/10 backdrop-blur-sm border-white/20">
             <CardHeader>
-              <CardTitle className="text-white text-lg">AI Features</CardTitle>
+              <CardTitle className="text-white text-lg">2024 AI Features</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="space-y-3">
                 <div className="flex items-center space-x-3">
-                  <Scale className="h-4 w-4 text-blue-300" />
-                  <span className="text-blue-200 text-sm">Legal Advice</span>
+                  <Smartphone className="h-4 w-4 text-blue-300" />
+                  <span className="text-blue-200 text-sm">Digital Age Issues</span>
                 </div>
                 <div className="flex items-center space-x-3">
-                  <BookOpen className="h-4 w-4 text-green-300" />
-                  <span className="text-blue-200 text-sm">Case Stories</span>
+                  <Briefcase className="h-4 w-4 text-green-300" />
+                  <span className="text-blue-200 text-sm">Gig Economy Rights</span>
                 </div>
                 <div className="flex items-center space-x-3">
-                  <Globe className="h-4 w-4 text-purple-300" />
-                  <span className="text-blue-200 text-sm">Multi-language</span>
+                  <Shield className="h-4 w-4 text-purple-300" />
+                  <span className="text-blue-200 text-sm">Cyber Protection</span>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <Globe className="h-4 w-4 text-orange-300" />
+                  <span className="text-blue-200 text-sm">Multi-language Support</span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <Heart className="h-4 w-4 text-pink-300" />
-                  <span className="text-blue-200 text-sm">Simplified Guidance</span>
+                  <span className="text-blue-200 text-sm">Mental Health Rights</span>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Emergency Contacts - Updated */}
+          <Card className="bg-red-500/10 backdrop-blur-sm border-red-300/30">
+            <CardHeader>
+              <CardTitle className="text-white text-lg">Emergency Helplines 2024</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-2 text-sm">
+                <div className="flex justify-between">
+                  <span className="text-red-200">Cyber Crime Helpline</span>
+                  <span className="text-white font-semibold">1930</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-red-200">Women Safety (24x7)</span>
+                  <span className="text-white font-semibold">181</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-red-200">Consumer Helpline</span>
+                  <span className="text-white font-semibold">1915</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-red-200">Legal Aid Services</span>
+                  <span className="text-white font-semibold">15100</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-red-200">Mental Health Support</span>
+                  <span className="text-white font-semibold">9152987821</span>
                 </div>
               </div>
             </CardContent>

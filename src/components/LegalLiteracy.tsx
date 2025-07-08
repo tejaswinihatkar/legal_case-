@@ -5,111 +5,153 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { BookOpen, Users, Globe, Heart, Scale, Search, Video, FileText, HelpCircle } from 'lucide-react';
+import { BookOpen, Users, Globe, Heart, Scale, Search, Video, FileText, HelpCircle, Smartphone, Shield, Briefcase, Home, Car } from 'lucide-react';
 
 const LegalLiteracy = () => {
-  const [selectedLanguage, setSelectedLanguage] = useState('english');
+  const [selectedLanguage, setSelectedLanguage] = useState('hinglish');
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [searchTerm, setSearchTerm] = useState('');
 
   const languages = [
     { value: 'english', label: 'English', flag: '🇺🇸' },
+    { value: 'hinglish', label: 'Hinglish', flag: '🇮🇳' },
     { value: 'hindi', label: 'Hindi', flag: '🇮🇳' },
     { value: 'marathi', label: 'Marathi', flag: '🇮🇳' },
     { value: 'gujarati', label: 'Gujarati', flag: '🇮🇳' },
     { value: 'bengali', label: 'Bengali', flag: '🇮🇳' },
     { value: 'tamil', label: 'Tamil', flag: '🇮🇳' },
+    { value: 'telugu', label: 'Telugu', flag: '🇮🇳' },
   ];
 
   const legalGuides = [
     {
       id: 1,
-      title: 'Consumer Rights & Protection',
-      description: 'Know your rights as a consumer and how to file complaints',
-      category: 'Consumer Law',
+      title: 'Gig Worker Rights & Benefits Guide',
+      description: 'अपने rights जानिए - Delivery, Cab, Freelance work के लिए complete guide',
+      category: 'Gig Economy',
       difficulty: 'Beginner',
-      readTime: '5 min',
-      languages: ['english', 'hindi', 'marathi'],
+      readTime: '4 min',
+      languages: ['hinglish', 'hindi', 'english'],
       popular: true,
-      icon: Scale
+      trending: true,
+      icon: Briefcase
     },
     {
       id: 2,
-      title: 'Employment Rights Guide',
-      description: 'Understanding your workplace rights and labor laws',
-      category: 'Labor Law',
-      difficulty: 'Intermediate',
-      readTime: '8 min',
-      languages: ['english', 'hindi', 'gujarati'],
+      title: 'Cyber Harassment & Online Safety',
+      description: 'Social media harassment, deepfakes, and digital privacy protection guide',
+      category: 'Cyber Safety',
+      difficulty: 'Beginner',
+      readTime: '5 min',
+      languages: ['hinglish', 'english', 'hindi'],
       popular: true,
-      icon: Users
+      trending: true,
+      icon: Shield
     },
     {
       id: 3,
-      title: 'Property Documentation Basics',
-      description: 'Essential documents needed for property transactions',
-      category: 'Property Law',
+      title: 'Housing & Rental Rights in 2024',
+      description: 'Tenant rights, illegal eviction protection, और WFH space के नए rules',
+      category: 'Housing',
       difficulty: 'Beginner',
       readTime: '6 min',
-      languages: ['english', 'marathi', 'gujarati'],
-      popular: false,
-      icon: FileText
+      languages: ['hinglish', 'marathi', 'gujarati'],
+      popular: true,
+      trending: false,
+      icon: Home
     },
     {
       id: 4,
-      title: 'Family Law Essentials',
-      description: 'Marriage, divorce, and family dispute guidance',
-      category: 'Family Law',
-      difficulty: 'Beginner',
+      title: 'Mental Health Rights at Workplace',
+      description: 'Workplace stress, burnout leave, और mental health protection के rights',
+      category: 'Employment',
+      difficulty: 'Intermediate',
       readTime: '7 min',
       languages: ['english', 'hindi', 'bengali'],
       popular: true,
+      trending: true,
       icon: Heart
     },
     {
       id: 5,
-      title: 'Digital Privacy & Cyber Laws',
-      description: 'Protecting yourself online and understanding cyber crimes',
-      category: 'Cyber Law',
-      difficulty: 'Intermediate',
-      readTime: '10 min',
-      languages: ['english', 'hindi', 'tamil'],
+      title: 'Consumer Rights in Digital Age',
+      description: 'Online shopping scams, app-based services, और digital payment disputes',
+      category: 'Consumer Protection',
+      difficulty: 'Beginner',
+      readTime: '5 min',
+      languages: ['hinglish', 'tamil', 'telugu'],
       popular: false,
-      icon: Globe
+      trending: true,
+      icon: Smartphone
     },
     {
       id: 6,
-      title: 'How to File an FIR',
-      description: 'Step-by-step guide to filing a First Information Report',
-      category: 'Criminal Law',
+      title: 'Vehicle & Transport Legal Guide',
+      description: 'Cab booking disputes, vehicle insurance claims, और traffic violation rights',
+      category: 'Transport',
       difficulty: 'Beginner',
       readTime: '4 min',
-      languages: ['english', 'hindi', 'marathi', 'gujarati'],
+      languages: ['hinglish', 'hindi', 'marathi', 'gujarati'],
+      popular: false,
+      trending: false,
+      icon: Car
+    },
+    {
+      id: 7,
+      title: 'Women Safety & Legal Protection',
+      description: 'Workplace harassment, online safety, और women-specific legal rights',
+      category: 'Women Rights',
+      difficulty: 'Beginner',
+      readTime: '8 min',
+      languages: ['hinglish', 'hindi', 'bengali', 'tamil'],
       popular: true,
-      icon: HelpCircle
+      trending: true,
+      icon: Scale
+    },
+    {
+      id: 8,
+      title: 'Student Rights & Education Law',
+      description: 'Fee disputes, online classes rights, और educational institution के against complaint',
+      category: 'Education',
+      difficulty: 'Beginner',
+      readTime: '5 min',
+      languages: ['hinglish', 'english', 'hindi'],
+      popular: false,
+      trending: false,
+      icon: BookOpen
     }
   ];
 
   const quickHelp = [
     {
-      question: "How to file a consumer complaint?",
-      answer: "Visit the National Consumer Helpline or file online at consumerhelpline.gov.in",
-      category: "Consumer Law"
+      question: "Swiggy/Zomato delivery partner के insurance claim कैसे करें?",
+      answer: "Company के साथ partnership agreement check करें, insurance policy details मांगें, और accident के 24 hours के अंदर report करें",
+      category: "Gig Economy"
     },
     {
-      question: "What documents are needed for property registration?",
-      answer: "Sale deed, NOC, property card, identity proof, and stamp duty payment receipt",
-      category: "Property Law"
+      question: "Instagram/Facebook पर harassment का legal action कैसे लें?",
+      answer: "Screenshots save करें, platform पर report करें, cyber crime portal पर complaint file करें - cybercrime.gov.in",
+      category: "Cyber Safety"
     },
     {
-      question: "How to report cyber crime?",
-      answer: "File complaint at cybercrime.gov.in or visit nearest cyber crime police station",
-      category: "Cyber Law"
+      question: "Landlord ने illegal eviction notice दिया है - क्या करें?",
+      answer: "Rent Control Act के under tenant rights हैं, legal notice भेजें, और district magistrate office में complaint करें",
+      category: "Housing Rights"
     },
     {
-      question: "What are basic employment rights?",
-      answer: "Right to fair wages, safe working conditions, and freedom from discrimination",
-      category: "Labor Law"
+      question: "Work from home allowance company ने बंद कर दिया - legal action?",
+      answer: "Employment contract check करें, Labour Commissioner office में complaint करें, या employee union से contact करें",
+      category: "Employment"
+    },
+    {
+      question: "Flipkart/Amazon से fake product मिला - refund कैसे लें?",
+      answer: "Consumer Court में complaint file करें, National Consumer Helpline 1915 पर call करें, या online portal use करें",
+      category: "Consumer Rights"
+    },
+    {
+      question: "Uber/Ola driver ने inappropriate behavior किया - action?",
+      answer: "App में complaint करें, police complaint file करें, और women helpline 181 पर call करें (if applicable)",
+      category: "Transport Safety"
     }
   ];
 
@@ -128,12 +170,26 @@ const LegalLiteracy = () => {
         <CardHeader>
           <CardTitle className="text-white text-2xl flex items-center">
             <BookOpen className="h-6 w-6 mr-3" />
-            Legal Literacy Hub
+            Legal Literacy Hub 2024
           </CardTitle>
           <CardDescription className="text-blue-200 text-lg">
-            Simplified legal guidance for everyone - Know your rights, understand the law
+            आज के जमाने की legal problems का simple solution - Modern legal guidance for everyone
           </CardDescription>
         </CardHeader>
+      </Card>
+
+      {/* Trending Alert */}
+      <Card className="bg-gradient-to-r from-orange-500/20 to-red-500/20 backdrop-blur-sm border-orange-300/30">
+        <CardContent className="p-4">
+          <div className="flex items-center space-x-3">
+            <Badge className="bg-red-500/20 text-red-300 border-red-500/30 animate-pulse">
+              🔥 Trending
+            </Badge>
+            <span className="text-white font-medium">
+              Most searched: Gig worker rights, Cyber harassment, Housing disputes, Mental health at work
+            </span>
+          </div>
+        </CardContent>
       </Card>
 
       {/* Filters */}
@@ -143,7 +199,7 @@ const LegalLiteracy = () => {
             <div className="flex-1 relative">
               <Search className="absolute left-3 top-3 h-4 w-4 text-blue-300" />
               <Input
-                placeholder="Search legal topics..."
+                placeholder="Search करें - gig work, cyber crime, housing..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 className="pl-10 bg-white/10 border-white/20 text-white placeholder:text-blue-200"
@@ -151,7 +207,7 @@ const LegalLiteracy = () => {
             </div>
             <Select value={selectedLanguage} onValueChange={setSelectedLanguage}>
               <SelectTrigger className="w-48 bg-white/10 border-white/20 text-white">
-                <SelectValue placeholder="Select Language" />
+                <SelectValue placeholder="भाषा चुनें" />
               </SelectTrigger>
               <SelectContent className="bg-slate-800 border-white/20">
                 <SelectItem value="all">All Languages</SelectItem>
@@ -168,12 +224,14 @@ const LegalLiteracy = () => {
               </SelectTrigger>
               <SelectContent className="bg-slate-800 border-white/20">
                 <SelectItem value="all">All Categories</SelectItem>
-                <SelectItem value="consumer">Consumer Law</SelectItem>
-                <SelectItem value="labor">Labor Law</SelectItem>
-                <SelectItem value="property">Property Law</SelectItem>
-                <SelectItem value="family">Family Law</SelectItem>
-                <SelectItem value="cyber">Cyber Law</SelectItem>
-                <SelectItem value="criminal">Criminal Law</SelectItem>
+                <SelectItem value="gig">Gig Economy</SelectItem>
+                <SelectItem value="cyber">Cyber Safety</SelectItem>
+                <SelectItem value="housing">Housing Rights</SelectItem>
+                <SelectItem value="employment">Employment</SelectItem>
+                <SelectItem value="consumer">Consumer Protection</SelectItem>
+                <SelectItem value="women">Women Rights</SelectItem>
+                <SelectItem value="transport">Transport</SelectItem>
+                <SelectItem value="education">Education</SelectItem>
               </SelectContent>
             </Select>
           </div>
@@ -183,13 +241,20 @@ const LegalLiteracy = () => {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Legal Guides */}
         <div className="lg:col-span-2 space-y-4">
-          <h2 className="text-2xl font-bold text-white">Legal Guides</h2>
+          <h2 className="text-2xl font-bold text-white">2024 के Legal Guides</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {filteredGuides.map((guide) => (
               <Card 
                 key={guide.id}
-                className="bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/15 transition-all duration-300 cursor-pointer"
+                className="bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/15 transition-all duration-300 cursor-pointer relative"
               >
+                {guide.trending && (
+                  <div className="absolute top-2 right-2">
+                    <Badge className="bg-red-500/20 text-red-300 border-red-500/30 text-xs">
+                      🔥 Trending
+                    </Badge>
+                  </div>
+                )}
                 <CardContent className="p-6">
                   <div className="flex items-start justify-between mb-4">
                     <guide.icon className="h-8 w-8 text-blue-300" />
@@ -245,13 +310,13 @@ const LegalLiteracy = () => {
           {/* Quick Help */}
           <Card className="bg-white/10 backdrop-blur-sm border-white/20">
             <CardHeader>
-              <CardTitle className="text-white text-lg">Quick Help</CardTitle>
+              <CardTitle className="text-white text-lg">Quick Help - तुरंत मदद</CardTitle>
               <CardDescription className="text-blue-200">
-                Common legal questions answered
+                Common 2024 legal questions
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <div className="space-y-4">
+              <div className="space-y-4 max-h-80 overflow-y-auto">
                 {quickHelp.map((item, index) => (
                   <div 
                     key={index}
@@ -268,10 +333,10 @@ const LegalLiteracy = () => {
             </CardContent>
           </Card>
 
-          {/* Resources */}
+          {/* Modern Resources */}
           <Card className="bg-white/10 backdrop-blur-sm border-white/20">
             <CardHeader>
-              <CardTitle className="text-white text-lg">Legal Resources</CardTitle>
+              <CardTitle className="text-white text-lg">2024 Resources</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="space-y-3">
@@ -280,28 +345,28 @@ const LegalLiteracy = () => {
                   className="w-full justify-start border-white/20 text-blue-200 hover:bg-white/10 hover:text-white"
                 >
                   <Video className="w-4 h-4 mr-2" />
-                  Video Tutorials
+                  YouTube Legal Guides
+                </Button>
+                <Button 
+                  variant="outline" 
+                  className="w-full justify-start border-white/20 text-blue-200 hover:bg-white/10 hover:text-white"
+                >
+                  <Smartphone className="w-4 h-4 mr-2" />
+                  Legal Apps & Tools
                 </Button>
                 <Button 
                   variant="outline" 
                   className="w-full justify-start border-white/20 text-blue-200 hover:bg-white/10 hover:text-white"
                 >
                   <FileText className="w-4 h-4 mr-2" />
-                  Legal Forms & Templates
-                </Button>
-                <Button 
-                  variant="outline" 
-                  className="w-full justify-start border-white/20 text-blue-200 hover:bg-white/10 hover:text-white"
-                >
-                  <HelpCircle className="w-4 h-4 mr-2" />
-                  FAQ Section
+                  Digital Forms & Templates
                 </Button>
                 <Button 
                   variant="outline" 
                   className="w-full justify-start border-white/20 text-blue-200 hover:bg-white/10 hover:text-white"
                 >
                   <Globe className="w-4 h-4 mr-2" />
-                  Government Portals
+                  Government Online Services
                 </Button>
               </div>
             </CardContent>
@@ -312,7 +377,7 @@ const LegalLiteracy = () => {
             <CardHeader>
               <CardTitle className="text-white text-lg flex items-center">
                 <Globe className="h-4 w-4 mr-2" />
-                Language Support
+                भाषा Support
               </CardTitle>
             </CardHeader>
             <CardContent>
@@ -328,33 +393,41 @@ const LegalLiteracy = () => {
                 ))}
               </div>
               <p className="text-blue-300 text-xs mt-3 text-center">
-                Legal guidance available in 6+ Indian languages
+                Modern legal guidance in 8+ languages
               </p>
             </CardContent>
           </Card>
 
-          {/* Emergency Contacts */}
+          {/* Emergency Contacts - Updated for 2024 */}
           <Card className="bg-red-500/10 backdrop-blur-sm border-red-300/30">
             <CardHeader>
-              <CardTitle className="text-white text-lg">Emergency Legal Help</CardTitle>
+              <CardTitle className="text-white text-lg">2024 Emergency Helplines</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="space-y-2 text-sm">
                 <div className="flex justify-between">
-                  <span className="text-red-200">Police Emergency</span>
-                  <span className="text-white font-semibold">100</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-red-200">Women Helpline</span>
-                  <span className="text-white font-semibold">181</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-red-200">Cyber Crime</span>
+                  <span className="text-red-200">Cyber Crime (24x7)</span>
                   <span className="text-white font-semibold">1930</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-red-200">Legal Aid</span>
+                  <span className="text-red-200">Women Safety Helpline</span>
+                  <span className="text-white font-semibold">181</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-red-200">Consumer Protection</span>
+                  <span className="text-white font-semibold">1915</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-red-200">Legal Aid Services</span>
                   <span className="text-white font-semibold">15100</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-red-200">Mental Health Support</span>
+                  <span className="text-white font-semibold">9152987821</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-red-200">Labour Rights Helpline</span>
+                  <span className="text-white font-semibold">1800-11-1228</span>
                 </div>
               </div>
             </CardContent>

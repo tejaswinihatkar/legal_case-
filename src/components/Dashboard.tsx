@@ -12,7 +12,7 @@ import CaseAnalyzer from './CaseAnalyzer';
 import LegalLiteracy from './LegalLiteracy';
 
 const Dashboard = () => {
-  const [activeTab, setActiveTab] = useState('trends');
+  const [activeTab, setActiveTab] = useState('trend');
 
   const stats = [
     { title: 'Digital Cases Analyzed', value: '12,847', change: '+267%', icon: Smartphone, trend: 'Cyber & AI crimes leading' },
@@ -73,9 +73,9 @@ const Dashboard = () => {
         {/* Main Content Tabs */}
         <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
           <TabsList className="grid w-full grid-cols-6 bg-white/10 backdrop-blur-sm border-white/20">
-            <TabsTrigger value="trends" className="data-[state=active]:bg-blue-600 data-[state=active]:text-white">
+            <TabsTrigger value="trend" className="data-[state=active]:bg-blue-600 data-[state=active]:text-white">
               <TrendingUp className="w-4 h-4 mr-2" />
-              <span className="hidden sm:inline">Trends</span>
+              <span className="hidden sm:inline">Trend</span>
             </TabsTrigger>
             <TabsTrigger value="categories" className="data-[state=active]:bg-blue-600 data-[state=active]:text-white">
               <BookOpen className="w-4 h-4 mr-2" />
@@ -99,7 +99,7 @@ const Dashboard = () => {
             </TabsTrigger>
           </TabsList>
 
-          <TabsContent value="trends" className="space-y-4">
+          <TabsContent value="trend" className="space-y-4">
             <TrendAnalysis />
           </TabsContent>
 

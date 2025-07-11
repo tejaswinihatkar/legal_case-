@@ -28,7 +28,20 @@
 }
 
 @media (prefers-reduced-motion: no-preference) {
+  .skin-bg {
+    background-color: #ffe4e1; /* skin/peach color */
+    color: #111111; /* black text for main content */
+  }
+  .skin-bg .highlight {
+    color: #d90429; /* red for emphasis/highlighted text */
+  }
+  .skin-bg .red-text {
+    color: #d90429; /* red for specific elements */
+  }
   a:nth-of-type(2) .logo {
+  .skin-bg .highlight {
+    color: #ffd700; /* gold for headings or important text */
+  }
     animation: logo-spin infinite 20s linear;
   }
 }
